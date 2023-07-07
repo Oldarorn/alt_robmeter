@@ -5,7 +5,7 @@ local function delPmeter(ent)
 end
 
 local function main()
-    local close = lib.getClosestObject(GetEntityCoords(ped))
+    local close = lib.getClosestObject(GetEntityCoords(cache.ped))
     local count = ox_inventory:Search('count', Config.Lockpick)
     if count > 0 then
         lib.callback('alt_robmeter:isTargetable', false, function(canRob)
@@ -14,7 +14,7 @@ local function main()
                 if Config.UseLock then
                     result = exports['lockpick']:startLockpick()
                 else
-                    result = lib.skillCheck({'easy', 'easy', 'hard'}, Config.Inputs)
+                    result = lib.skillCheck({'easy', 'easy', 'easy'}, Config.Inputs)
                 end
 
                 if result then
@@ -48,6 +48,7 @@ local function main()
                     end
                 else
                     -- You should alert the police about what you've done you criminal !
+                    -- And maybe remove the used lockpick
                     -- Insert function or event of whatever thing to trigger to send an alert
                 end
             else
