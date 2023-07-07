@@ -1,0 +1,7 @@
+{
+    "policeAlert": "Somebody is trying to rob a parkmeter",
+    "alreadyRobbed": "This parkmeter has already been robbed",
+    "noLockpick": "You don't have the required item to rob it",
+    "robMeter": "Rob the parkmeter",
+    "money": "you earned %s$"
+}
