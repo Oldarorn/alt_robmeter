@@ -10,8 +10,8 @@ Config.Lockpick = 'lockpick' -- The required item to rob !
 
 
 Config.Models = {
-    'prop_parknmeter_02', -- -1940238623
-    'prop_parknmeter_01' -- 2108567945
+    `prop_parknmeter_02`, -- -1940238623
+    `prop_parknmeter_01` -- 2108567945
 }
 
 Config.Inputs = {'z', 'q', 's', 'd'} -- AZERTY keyboards FTW ! But feel free to edit it as QWERTY or whatever keyboard you use
