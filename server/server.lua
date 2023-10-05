@@ -18,19 +18,8 @@ AddEventHandler('alt_robmeter:cdEntity', function(entity)
     table.insert(cdEntities, {ent = entity, timer = Config.Cooldown})
 end)
 
-lib.callback.register('alt_robmeter:isTargetable', function(source, entity)
-    if next(cdEntities) == nil then
-        return true
-    else
-        for k, v in pairs(cdEntities) do
-            if v.ent == entity then
-                return false
-            else
-                return true
-            end
-        end
-    end
-
+lib.callback.register('alt_robmeter:isTargetable', function(source)
+    return cdEntities
 end)
 
 CreateThread(function()
