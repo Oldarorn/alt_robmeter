@@ -5,10 +5,24 @@ local function delPmeter(ent)
 end
 
 local function main()
-    local close = lib.getClosestObject(GetEntityCoords(cache.ped))
+    local pos = GetEntityCoords(PlayerPedId())
+    local _, dist = lib.getClosestObject(pos, 2.0)
+    
     local count = ox_inventory:Search('count', Config.Lockpick)
     if count > 0 then
-        lib.callback('alt_robmeter:isTargetable', false, function(canRob)
+        lib.callback('alt_robmeter:isTargetable', false, function(cdEntities)
+        local canRob = true
+
+        for k, v in pairs(cdEntities) do
+            local distance = #(dist - vec3(v.ent.x, v.ent.y, v.ent.z))
+            if distance > 1.5 then
+                canRob = true
+            else
+                canRob = false
+                break
+            end
+        end
+                
             if canRob then
                 local result
                 if Config.UseLock then
@@ -65,7 +79,7 @@ end
 CreateThread(function()
     local options = {
         label = locale('robMeter'),
-        icon = "fad fa-screwdriver",
+        icon = "fas fa-screwdriver",
         distance = 1.5,
         onSelect = function()
             main()
